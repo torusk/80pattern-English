@@ -23,7 +23,7 @@ const App: React.FC = () => {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
-    // ファイル名とラベルのペアを用意
+    // ファイル名とラベルのペアを準備
     setFiles([
       { fileName: "sentences1.json", label: "６歳までに覚える２０パターン" },
       { fileName: "sentences2.json", label: "８歳までに覚える２２パターン" },
