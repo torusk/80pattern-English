@@ -1,0 +1,442 @@
+[
+    {
+        "日本語": "夕飯を食べに立ち寄ってみたらどう?",
+        "英語": "Why don't you stop by for dinner?"
+    },
+    {
+        "日本語": "散歩する気になれない。",
+        "英語": "I don't feel like going for a walk."
+    },
+    {
+        "日本語": "渋谷までの行き方を知っていますか?",
+        "英語": "Do you know how to get to Shibuya?"
+    },
+    {
+        "日本語": "今夜は外食したいな。",
+        "英語": "I feel like eating out tonight."
+    },
+    {
+        "日本語": "このファイルを送った方がいいですか?",
+        "英語": "Should I send this file to you?"
+    },
+    {
+        "日本語": "早く寝たい。",
+        "英語": "I feel like going to bed early."
+    },
+    {
+        "日本語": "ブロッコリー食べなきゃいけない?",
+        "英語": "Do I have to eat my broccoli?"
+    },
+    {
+        "日本語": "この部屋は小さすぎて、100人は入らない",
+        "英語": "This room is too small to contain 100 people."
+    },
+    {
+        "日本語": "いつまでこれは有効ですか?",
+        "英語": "Until when is this valid?"
+    },
+    {
+        "日本語": "私のスピーチをどう思いましたか?",
+        "英語": "What did you think of my speech?"
+    },
+    {
+        "日本語": "あなたを駅で待っておけばいい?",
+        "英語": "Should I wait for you at the station?"
+    },
+    {
+        "日本語": "きっと忙しいのでしょう。",
+        "英語": "You must be busy."
+    },
+    {
+        "日本語": "どれだけ待つ必要があるのかな?",
+        "英語": "I wonder how long we need to wait."
+    },
+    {
+        "日本語": "そんなこと、分かっているよ。",
+        "英語": "You don't have to tell me."
+    },
+    {
+        "日本語": "お腹が減ったでしょう?",
+        "英語": "You must be hungry."
+    },
+    {
+        "日本語": "充電器を持ってくるのを忘れた。",
+        "英語": "I forgot to bring my charger."
+    },
+    {
+        "日本語": "そんなに悪くないはずだよ。",
+        "英語": "It can't be that bad."
+    },
+    {
+        "日本語": "いつまでオフィスにいるの?",
+        "英語": "Until when are you going to stay in the office?"
+    },
+    {
+        "日本語": "それは、やらなくていい。",
+        "英語": "You don't have to do it."
+    },
+    {
+        "日本語": "よくそんなにかわいそうなことができるね。",
+        "英語": "How can you be so cruel?"
+    },
+    {
+        "日本語": "それは仕方がない。",
+        "英語": "It can't be helped."
+    },
+    {
+        "日本語": "昔は細かったのよ。",
+        "英語": "I used to be thin."
+    },
+    {
+        "日本語": "以前は彼が好きだったのよ。",
+        "英語": "I used to like him."
+    },
+    {
+        "日本語": "これは辛すぎて食べられないよ。",
+        "英語": "This is too hot to eat."
+    },
+    {
+        "日本語": "それは良いアイデアだと思わない?",
+        "英語": "Don't you think that's a good idea?"
+    },
+    {
+        "日本語": "それはあんなのかな?ジルのではないはず。",
+        "英語": "Could it be Anna's?It can't be Jill's."
+    },
+    {
+        "日本語": "すみません。ここに座ってもいいですか?",
+        "英語": "Excuse me, but can I sit here?"
+    },
+    {
+        "日本語": "いつまであなたを待てばいいですか?",
+        "英語": "Until when should I wait for you?"
+    },
+    {
+        "日本語": "それを聞いたことはありますか?",
+        "英語": "Have you ever heard of it?"
+    },
+    {
+        "日本語": "それを注文するのを忘れていた。",
+        "英語": "I forgot to order it."
+    },
+    {
+        "日本語": "LAに行くのが楽しみ。",
+        "英語": "I'm looking forward to going to LA"
+    },
+    {
+        "日本語": "それは少し卑劣だったと思わない?",
+        "英語": "Don't you think that was a little mean?"
+    },
+    {
+        "日本語": "そんなに難しくはないよ。",
+        "英語": "It can't be that difficult."
+    },
+    {
+        "日本語": "パスワードの変更方法を知っていますか?",
+        "英語": "Do you know how to change the password?"
+    },
+    {
+        "日本語": "彼の態度をどう思う?",
+        "英語": "What do you think of his attitude?"
+    },
+    {
+        "日本語": "パーティーに妹を連れてきたらどう?",
+        "英語": "Why don't you bring your sister to the party?"
+    },
+    {
+        "日本語": "彼のメールに返信した方がいいかな?",
+        "英語": "Should I reply to his email?"
+    },
+    {
+        "日本語": "どのくらいトレーニングしますか?",
+        "英語": "How often do you train?"
+    },
+    {
+        "日本語": "滅多に外食しません。",
+        "英語": "I rarely eat out."
+    },
+    {
+        "日本語": "学ぶのに遅すぎるということは決してない。",
+        "英語": "One is never too old to learn."
+    },
+    {
+        "日本語": "僕たちはどこに向かっているのかな?",
+        "英語": "I wonder where we are heading."
+    },
+    {
+        "日本語": "彼に謝らなければならない。",
+        "英語": "I must apologize to him."
+    },
+    {
+        "日本語": "昔、ここでかくれんぼしたな。",
+        "英語": "I used to play hide and seek here."
+    },
+    {
+        "日本語": "その映画、どう思った?",
+        "英語": "What did you think of the movie?"
+    },
+    {
+        "日本語": "ブルーノさんですよね。",
+        "英語": "You must be Bruno."
+    },
+    {
+        "日本語": "お父様にお会いすることを楽しみにしています。",
+        "英語": "I'm looking forward to meeting your father."
+    },
+    {
+        "日本語": "君は若すぎてこれを理解できない。",
+        "英語": "You are too young to understand this."
+    },
+    {
+        "日本語": "私の新しいスーツをどう思いますか?",
+        "英語": "What do you think of my new suit?"
+    },
+    {
+        "日本語": "そんなに意地汚くならなくていいよ。",
+        "英語": "You don't have to be so mean."
+    },
+    {
+        "日本語": "どっちを選べばいいのかな?",
+        "英語": "I wonder which one I should choose."
+    },
+    {
+        "日本語": "髪を切ってもらったらどう?",
+        "英語": "Why don't you get a haircut?"
+    },
+    {
+        "日本語": "どれくらいの頻度で日本に来ますか?",
+        "英語": "How often do you come to Japan?"
+    },
+    {
+        "日本語": "生魚を食べたことがありますか?",
+        "英語": "Have you ever eaten raw fish?"
+    },
+    {
+        "日本語": "本物であるはずがないでしょ?",
+        "英語": "It can't be real."
+    },
+    {
+        "日本語": "言う通りにしなければいけないですか?",
+        "英語": "Do I have to do as you say?"
+    },
+    {
+        "日本語": "お米から調理したほうがいいかな?",
+        "英語": "Should I cook the rice first?"
+    },
+    {
+        "日本語": "よくそんなに楽観的でいられるね。",
+        "英語": "How can you be so optimistic?"
+    },
+    {
+        "日本語": "彼女のことどう思う?",
+        "英語": "What do you think of her?"
+    },
+    {
+        "日本語": "泣きたい。",
+        "英語": "I feel like crying."
+    },
+    {
+        "日本語": "どうやったらこれらの動画をアップロードできるか知っていますか?",
+        "英語": "Do you know how to upload these videos?"
+    },
+    {
+        "日本語": "いつまで日本にいますか?",
+        "英語": "Until when you will being in japan?"
+    },
+    {
+        "日本語": "私はめったに海外旅行をしません。",
+        "英語": "I rarely travel abroad."
+    },
+    {
+        "日本語": "私はめったに風をひきません。",
+        "英語": "I rarely catch a cold."
+    },
+    {
+        "日本語": "疲れたでしょう。",
+        "英語": "You must be tired."
+    },
+    {
+        "日本語": "家で一人になるのを楽しみにしている。",
+        "英語": "I'm looking forward to being alone in the house."
+    },
+    {
+        "日本語": "彼女をデートに誘ったらどう?",
+        "英語": "Why don't you ask her out?"
+    },
+    {
+        "日本語": "彼女は少しわがままだと思わない?",
+        "英語": "Don't you think she is a bit selfish?"
+    },
+    {
+        "日本語": "その本はあなたにはあまりにも簡単すぎると思わない?",
+        "英語": "Don't you think that book too easy for you ?"
+    },
+    {
+        "日本語": "このスープは熱すぎて飲めない。",
+        "英語": "this soup too hot to drink."
+    },
+    {
+        "日本語": "アラームをセットするのを忘れた。",
+        "英語": "I forgot to set the alarm."
+    },
+    {
+        "日本語": "よく彼に優しくできるね。",
+        "英語": "How can you be so nice to him?"
+    },
+    {
+        "日本語": "何もする気が起こりません。",
+        "英語": "I don't feel like doing anything."
+    },
+    {
+        "日本語": "めったに本を読みません。",
+        "英語": "I rarely read books."
+    },
+    {
+        "日本語": "図書館の本を持ってくるのを忘れた。",
+        "英語": "I forgot to bring the library book."
+    },
+    {
+        "日本語": "これをフランス語に翻訳するには、どうすればいいかわかりますか?",
+        "英語": "Do you know how to translate this into French?"
+    },
+    {
+        "日本語": "お返事をお待ちしております。",
+        "英語": "I'm looking forward to hearing back from you."
+    },
+    {
+        "日本語": "すみませんが、もう少しゆっくり話していただけますか?",
+        "英語": "Excuse me, but could you speak a little more slowly?"
+    },
+    {
+        "日本語": "どのくらい歯医者に見てもらっていますか?",
+        "英語": "How often do you see a dentist?"
+    },
+    {
+        "日本語": "なぜ彼女は来なかったのかな?",
+        "英語": "I wonder why she didn't come."
+    },
+    {
+        "日本語": "買い物リストを作らなくちゃ。",
+        "英語": "I must make a shopping list."
+    },
+    {
+        "日本語": "明日は雨模様なのかな?",
+        "英語": "I wonder if it will rain tomorrow."
+    },
+    {
+        "日本語": "どうやってわかるの?",
+        "英語": "How can you tell?"
+    },
+    {
+        "日本語": "京都に行ったことがありますか?",
+        "英語": "Have you ever been to Kyoto?"
+    },
+    {
+        "日本語": "めったに実家に帰りません。",
+        "英語": "I rarely go back to my parents' house."
+    },
+    {
+        "日本語": "どのくらいゴルフをしますか?",
+        "英語": "How often do you play golf?"
+    },
+    {
+        "日本語": "すみませんが、質問があります。",
+        "英語": "Excuse me, but I have a question."
+    },
+    {
+        "日本語": "すみませんが、わかりません。それはどういう意味ですか?",
+        "英語": "Excuse me, but I don't understand.What does it mean?"
+    },
+    {
+        "日本語": "よくそんなことが言えるね？",
+        "英語": "How can you say such a thing."
+    },
+    {
+        "日本語": "地震を経験したことはありますか？",
+        "英語": "Have you ever experienced an earthquake?"
+    },
+    {
+        "日本語": "浮気されたことある?",
+        "英語": "Have you ever been cheated on?"
+    },
+    {
+        "日本語": "スーツを着ないといけない？",
+        "英語": "Do I have to wear a suits?"
+    },
+    {
+        "日本語": "すみませんが、お願いを聞いていただけませんか？",
+        "英語": "Excuse me, but could you do me a favor?"
+    },
+    {
+        "日本語": "これ、買わないとダメなの？",
+        "英語": "Do I have to buy this?"
+    },
+    {
+        "日本語": "予約のキャンセルはいつまでできますか？",
+        "英語": "Until when can I cancel reservation?"
+    },
+    {
+        "日本語": "昔、彼とは友達だった。",
+        "英語": "I used to be  friend with him."
+    },
+    {
+        "日本語": "あなたが謝ることはない。",
+        "英語": "You don't have to apologize."
+    },
+    {
+        "日本語": "その小テスト、ちょっと難しいと思わない?",
+        "英語": "Don't you think the quiz is a bit difficult?"
+    },
+    {
+        "日本語": "あなたの来週の授業を楽しみにしています。",
+        "英語": "I'm looking forward to your class next week."
+    },
+    {
+        "日本語": "昼寝したらどう?",
+        "英語": "Why don't you take a nap?"
+    },
+    {
+        "日本語": "病気の友人の見舞いをしなければ。",
+        "英語": "I must inquire after my sick friend."
+    },
+    {
+        "日本語": "個人的にお話ししなければならない。",
+        "英語": "I must talk to you privately."
+    },
+    {
+        "日本語": "ワクワクしているでしょう。",
+        "英語": "You must be excited."
+    },
+    {
+        "日本語": "ゴミを出すのを忘れた。",
+        "英語": "I forgot to take the trash out."
+    },
+    {
+        "日本語": "どのくらい彼に会っているの?",
+        "英語": "How often do you see him?"
+    },
+    {
+        "日本語": "一生懸命勉強しなければ。",
+        "英語": "I must study hard."
+    },
+    {
+        "日本語": "前払いしなければいけませんか?",
+        "英語": "Do I have to pay in advance?"
+    },
+    {
+        "日本語": "どうやってこれを食べるか知っていますか?",
+        "英語": "Do you know how to eat this?"
+    },
+    {
+        "日本語": "すべてを知らなくてもいいよ。",
+        "英語": "You don't have to know everything."
+    },
+    {
+        "日本語": "かつてはロンドンに住んでいたのですよ。",
+        "英語": "I used to live in London."
+    },
+    {
+        "日本語": "傘を持って行った方がいいですか。",
+        "英語": "Should I bring umbrella?"
+    }
+]
