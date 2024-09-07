@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 interface Sentence {
   日本語: string;
@@ -12,9 +12,11 @@ interface QuizProps {
 
 const Quiz: React.FC<QuizProps> = ({ sentences, onFinish }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [userAnswer, setUserAnswer] = useState('');
+  const [userAnswer, setUserAnswer] = useState("");
   const [score, setScore] = useState(0);
   const [quizSentences, setQuizSentences] = useState<Sentence[]>([]);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
 
   useEffect(() => {
     // 10問をランダムに選択
@@ -22,15 +24,30 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish }) => {
   }, [sentences]);
 
   const handleSubmit = () => {
-    if (userAnswer.trim().toLowerCase() === quizSentences[currentIndex].英語.trim().toLowerCase()) {
+    const correctAnswer = quizSentences[currentIndex].英語.trim().toLowerCase();
+    const isAnswerCorrect = userAnswer.trim().toLowerCase() === correctAnswer;
+
+    setIsCorrect(isAnswerCorrect);
+    setShowAnswer(true);
+
+    if (isAnswerCorrect) {
       setScore(score + 1);
     }
 
-    if (currentIndex < 9) {
-      setCurrentIndex(currentIndex + 1);
-      setUserAnswer('');
-    } else {
-      onFinish(score + 1);
+    setTimeout(() => {
+      if (currentIndex < 9) {
+        setCurrentIndex(currentIndex + 1);
+        setUserAnswer("");
+        setShowAnswer(false);
+      } else {
+        onFinish(isAnswerCorrect ? score + 1 : score);
+      }
+    }, 3000); // 3秒後に次の問題に進む
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSubmit();
     }
   };
 
@@ -38,21 +55,32 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish }) => {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4">問題 {currentIndex + 1} / 10</h2>
+      <h2 className="text-xl font-semibold mb-4">
+        問題 {currentIndex + 1} / 10
+      </h2>
       <p className="mb-2">日本語: {quizSentences[currentIndex].日本語}</p>
       <input
         type="text"
         value={userAnswer}
         onChange={(e) => setUserAnswer(e.target.value)}
+        onKeyPress={handleKeyPress}
         className="border p-2 w-full mb-2"
         placeholder="英語で入力してください"
+        disabled={showAnswer}
       />
-      <button
-        onClick={handleSubmit}
-        className="bg-green-500 text-white px-4 py-2 rounded"
-      >
-        回答
-      </button>
+      {showAnswer && (
+        <div
+          className={`mt-2 p-2 ${isCorrect ? "bg-green-100" : "bg-red-100"}`}
+        >
+          {isCorrect ? (
+            <p className="text-green-700">正解です！</p>
+          ) : (
+            <p className="text-red-700">
+              惜しい！正しい答えは: {quizSentences[currentIndex].英語}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
