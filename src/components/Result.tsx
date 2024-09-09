@@ -1,8 +1,9 @@
 import React from "react";
 
+// コンポーネントのプロプス定義
 interface ResultProps {
-  score: number;
-  onReset: () => void;
+  score: number; // 最終スコア
+  onReset: () => void; // リセット時のコールバック関数
 }
 
 const Result: React.FC<ResultProps> = ({ score, onReset }) => {
