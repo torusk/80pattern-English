@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from "react";
 
-// 文章の型定義
 interface Sentence {
   日本語: string;
   英語: string;
 }
 
-// コンポーネントのプロプス定義
 interface QuizProps {
-  sentences: Sentence[]; // 全ての文章
-  onFinish: (score: number) => void; // クイズ終了時のコールバック関数
+  sentences: Sentence[];
+  onFinish: (score: number, wrongSentences: Sentence[]) => void;
+  isReviewMode: boolean;
 }
 
-const Quiz: React.FC<QuizProps> = ({ sentences, onFinish }) => {
-  // 状態変数の定義
-  const [currentIndex, setCurrentIndex] = useState(0); // 現在の問題のインデックス
-  const [userAnswer, setUserAnswer] = useState(""); // ユーザーの回答
-  const [score, setScore] = useState(0); // 現在のスコア
-  const [quizSentences, setQuizSentences] = useState<Sentence[]>([]); // クイズ用にランダムに選択された文章
-  const [showAnswer, setShowAnswer] = useState(false); // 答えを表示するかどうか
-  const [isCorrect, setIsCorrect] = useState(false); // 回答が正解かどうか
+const Quiz: React.FC<QuizProps> = ({ sentences, onFinish, isReviewMode }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [userAnswer, setUserAnswer] = useState("");
+  const [score, setScore] = useState(0);
+  const [quizSentences, setQuizSentences] = useState<Sentence[]>([]);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [wrongSentences, setWrongSentences] = useState<Sentence[]>([]);
 
-  // コンポーネントのマウント時に実行
   useEffect(() => {
-    // 10問をランダムに選択
-    setQuizSentences(sentences.sort(() => 0.5 - Math.random()).slice(0, 10));
-  }, [sentences]);
+    if (isReviewMode) {
+      setQuizSentences(sentences);
+    } else {
+      setQuizSentences(sentences.sort(() => 0.5 - Math.random()).slice(0, 10));
+    }
+  }, [sentences, isReviewMode]);
 
-  // 回答を提出する処理
   const handleSubmit = () => {
     const correctAnswer = quizSentences[currentIndex].英語.trim().toLowerCase();
     const isAnswerCorrect = userAnswer.trim().toLowerCase() === correctAnswer;
@@ -37,21 +37,21 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish }) => {
 
     if (isAnswerCorrect) {
       setScore(score + 1);
+    } else {
+      setWrongSentences([...wrongSentences, quizSentences[currentIndex]]);
     }
 
-    // 3秒後に次の問題に進む
     setTimeout(() => {
-      if (currentIndex < 9) {
+      if (currentIndex < quizSentences.length - 1) {
         setCurrentIndex(currentIndex + 1);
         setUserAnswer("");
         setShowAnswer(false);
       } else {
-        onFinish(isAnswerCorrect ? score + 1 : score);
+        onFinish(isAnswerCorrect ? score + 1 : score, wrongSentences);
       }
     }, 3000);
   };
 
-  // Enterキーを押した時の処理
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSubmit();
@@ -63,7 +63,7 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish }) => {
   return (
     <div>
       <h2 className="text-xl font-semibold mb-4">
-        問題 {currentIndex + 1} / 10
+        問題 {currentIndex + 1} / {quizSentences.length}
       </h2>
       <p className="mb-2">日本語: {quizSentences[currentIndex].日本語}</p>
       <input
