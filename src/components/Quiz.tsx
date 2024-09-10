@@ -62,7 +62,7 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish }) => {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4">
+      <h2 className="text-2xl font-semibold mb-4">
         問題 {currentIndex + 1} / 10
       </h2>
       <p className="mb-2">日本語: {quizSentences[currentIndex].日本語}</p>
@@ -71,13 +71,17 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish }) => {
         value={userAnswer}
         onChange={(e) => setUserAnswer(e.target.value)}
         onKeyPress={handleKeyPress}
-        className="border p-2 w-full mb-2"
+        className="border border-gray-300 p-2 w-full mb-2 rounded"
         placeholder="英語で入力してください"
         disabled={showAnswer}
       />
       {showAnswer && (
         <div
-          className={`mt-2 p-2 ${isCorrect ? "bg-green-100" : "bg-red-100"}`}
+          className={`mt-2 p-2 rounded ${
+            isCorrect
+              ? "bg-green-100 text-green-800"
+              : "bg-red-100 text-red-800"
+          }`}
         >
           {isCorrect ? (
             <p className="text-green-700">正解です！</p>

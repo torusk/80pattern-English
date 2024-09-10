@@ -1,3 +1,4 @@
+/* アプリケーション全体のスタイル */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,6 +6,7 @@
   text-align: center;
 }
 
+/* ロゴのスタイル（現在使用されていない場合は削除可能） */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -18,6 +20,7 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* ロゴのアニメーション（現在使用されていない場合は削除可能） */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -33,20 +36,82 @@
   }
 }
 
+/* カードのスタイル（現在使用されていない場合は削除可能） */
 .card {
   padding: 2em;
 }
 
+/* ドキュメントリンクのスタイル（現在使用されていない場合は削除可能） */
 .read-the-docs {
   color: #888;
 }
 
-.level {
-  background-color: #f0faff; /* 明るいライトブルーに変更 */
-  padding: 0.25rem 0.75rem; /* px-3 py-1 */
-  border-radius: 0.25rem; /* rounded */
+/* ファイル選択ボタンのスタイル */
+.level-button {
+  background-color: #f0faff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
 }
 
-.level:hover {
-  background-color: aqua; /* hoverでさらに明るいブルー */
+.level-button:hover {
+  background-color: aqua;
+}
+
+/* 一般的なボタンスタイル */
+.button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #2563eb;
+}
+
+/* 入力フィールドのスタイル */
+.input-field {
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+/* 結果表示のスタイル */
+.result-correct {
+  background-color: #d1fae5;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  color: #047857;
+}
+
+.result-incorrect {
+  background-color: #fee2e2;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  color: #b91c1c;
+}
+
+/* コンテナのスタイル */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* 見出しのスタイル */
+.heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* サブ見出しのスタイル */
+.sub-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }

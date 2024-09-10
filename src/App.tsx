@@ -69,8 +69,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">
+    <div className="max-w-4xl mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-6 text-center">
         ８０パターンで英語が止まらない
       </h1>
       {/* ファイルが選択されていない場合、FileSelector を表示 */}
@@ -81,7 +81,7 @@ const App: React.FC = () => {
       {selectedFile && !quizStarted && (
         <button
           onClick={startQuiz}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300"
         >
           出題を開始！
         </button>
