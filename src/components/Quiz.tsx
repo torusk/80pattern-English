@@ -62,7 +62,7 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish }) => {
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold mb-4">
+      <h2 className="text-xl font-semibold mb-4">
         問題 {currentIndex + 1} / 10
       </h2>
       <p className="mb-2">日本語: {quizSentences[currentIndex].日本語}</p>

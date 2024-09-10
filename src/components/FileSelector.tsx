@@ -15,9 +15,7 @@ interface FileSelectorProps {
 const FileSelector: React.FC<FileSelectorProps> = ({ files, onSelect }) => {
   return (
     <div>
-      <h2 className="text-[2.5vw] sm:text-[2vw] md:text-[1.8vw] lg:text-[1.5vw] font-bold mb-6 text-center whitespace-nowrap overflow-hidden text-ellipsis">
-        コースを選択してください：
-      </h2>
+      <h2 className="text-xl font-semibold mb-4">コースを選択してください：</h2>
       <ul className="space-y-2">
         {/* 利用可能なファイルのリストをマップしてボタンを生成 */}
         {files.map((fileOption, index) => (
