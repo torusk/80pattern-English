@@ -1,7 +1,11 @@
 module.exports = {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontSize: {
+        "responsive-title": "clamp(1.5rem, 4vw, 2.5rem)",
+      },
+    },
   },
   plugins: [],
 };

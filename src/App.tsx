@@ -70,7 +70,7 @@ const App: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6 text-center">
+      <h1 className="text-responsive-title font-bold mb-6 text-center leading-tight">
         ８０パターンで英語が止まらない
       </h1>
       {/* ファイルが選択されていない場合、FileSelector を表示 */}
