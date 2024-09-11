@@ -21,8 +21,9 @@ const App: React.FC = () => {
   const [quizStarted, setQuizStarted] = useState(false);
   const [quizFinished, setQuizFinished] = useState(false);
   const [score, setScore] = useState(0);
-  const [incorrectSentences, setIncorrectSentences] = useState<Sentence[]>([]); // 新しい状態: 間違えた問題
-  const [isReviewMode, setIsReviewMode] = useState(false); // 新しい状態: 復習モードかどうか
+  const [incorrectSentences, setIncorrectSentences] = useState<Sentence[]>([]);
+  const [isReviewMode, setIsReviewMode] = useState(false);
+  const [totalAnswered, setTotalAnswered] = useState(0);
 
   useEffect(() => {
     setFiles([
@@ -46,12 +47,18 @@ const App: React.FC = () => {
     setQuizFinished(false);
     setScore(0);
     setIsReviewMode(reviewMode);
+    setTotalAnswered(0);
   };
 
-  const finishQuiz = (finalScore: number, wrongSentences: Sentence[]) => {
+  const finishQuiz = (
+    finalScore: number,
+    wrongSentences: Sentence[],
+    answered: number
+  ) => {
     setQuizFinished(true);
     setScore(finalScore);
     setIncorrectSentences(wrongSentences);
+    setTotalAnswered(answered);
   };
 
   const resetQuiz = () => {
@@ -62,13 +69,19 @@ const App: React.FC = () => {
     setScore(0);
     setIncorrectSentences([]);
     setIsReviewMode(false);
+    setTotalAnswered(0);
   };
+
+  // タイトルを表示するかどうかを決定する
+  const showTitle = !selectedFile;
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <h2 className="text-xl font-semibold mb-4">
-        80パターンで英語が止まらない
-      </h2>
+      {showTitle && (
+        <h2 className="text-xl font-semibold mb-4">
+          80パターンで英語が止まらない
+        </h2>
+      )}
       {!selectedFile && (
         <FileSelector files={files} onSelect={handleFileSelect} />
       )}
@@ -93,6 +106,7 @@ const App: React.FC = () => {
           onReset={resetQuiz}
           onReviewIncorrect={() => startQuiz(true)}
           incorrectCount={incorrectSentences.length}
+          totalAnswered={totalAnswered}
         />
       )}
     </div>
