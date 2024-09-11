@@ -24,16 +24,16 @@ const Result: React.FC<ResultProps> = ({
       {incorrectCount > 0 && (
         <button
           onClick={onReviewIncorrect}
-          className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded transition duration-300 mr-4"
+          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300 mr-4 my-4"
         >
           間違えた問題を解く ({incorrectCount}問)
         </button>
       )}
       <button
         onClick={onReset}
-        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300"
+        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300 mr-4"
       >
-        もう一度プレイする
+        もう一度チャレンジする!
       </button>
     </div>
   );
