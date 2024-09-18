@@ -1,4 +1,4 @@
-import React, { useState, useEffect, KeyboardEvent } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 interface Sentence {
   日本語: string;
@@ -34,30 +34,8 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish, isReviewMode }) => {
     }
   }, [sentences, isReviewMode]);
 
-  // キーボードイベントの処理
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Enter") {
-        e.preventDefault(); // デフォルトの挙動を防ぐ
-        if (waitingForNext) {
-          // 次の問題に移動する
-          moveToNextQuestion();
-        } else {
-          // 回答を提出する
-          handleSubmit();
-        }
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown as any);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown as any);
-    };
-  }, [waitingForNext, userAnswer]);
-
-  // 回答を提出する処理
-  const handleSubmit = () => {
+  // handleSubmit関数をuseCallbackでメモ化
+  const handleSubmit = useCallback(() => {
     if (showAnswer) {
       // 既に回答を提出している場合は何もしない
       return;
@@ -71,23 +49,46 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish, isReviewMode }) => {
     setWaitingForNext(true);
 
     if (isAnswerCorrect) {
-      setScore(score + 1);
+      setScore((prevScore) => prevScore + 1);
     } else {
-      setWrongSentences([...wrongSentences, quizSentences[currentIndex]]);
+      setWrongSentences((prevWrongSentences) => [
+        ...prevWrongSentences,
+        quizSentences[currentIndex],
+      ]);
     }
-  };
+  }, [showAnswer, userAnswer, quizSentences, currentIndex]);
 
-  // 次の問題に移動する処理
-  const moveToNextQuestion = () => {
+  // moveToNextQuestion関数をuseCallbackでメモ化
+  const moveToNextQuestion = useCallback(() => {
     if (currentIndex < quizSentences.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+      setCurrentIndex((prevIndex) => prevIndex + 1);
       setUserAnswer("");
       setShowAnswer(false);
       setWaitingForNext(false);
     } else {
       onFinish(score, wrongSentences, currentIndex + 1);
     }
-  };
+  }, [currentIndex, quizSentences.length, onFinish, score, wrongSentences]);
+
+  // キーボードイベントの処理
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        if (waitingForNext) {
+          moveToNextQuestion();
+        } else {
+          handleSubmit();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [waitingForNext, handleSubmit, moveToNextQuestion]);
 
   // クイズを早期に終了する処理
   const handleEarlyFinish = () => {
