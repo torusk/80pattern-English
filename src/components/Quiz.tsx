@@ -34,11 +34,32 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish, isReviewMode }) => {
     }
   }, [sentences, isReviewMode]);
 
+  // キーボードイベントの処理
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        e.preventDefault(); // デフォルトの挙動を防ぐ
+        if (waitingForNext) {
+          // 次の問題に移動する
+          moveToNextQuestion();
+        } else {
+          // 回答を提出する
+          handleSubmit();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown as any);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown as any);
+    };
+  }, [waitingForNext, userAnswer]);
+
   // 回答を提出する処理
   const handleSubmit = () => {
-    if (waitingForNext) {
-      // 次の問題に移動する準備ができている場合
-      moveToNextQuestion();
+    if (showAnswer) {
+      // 既に回答を提出している場合は何もしない
       return;
     }
 
@@ -68,14 +89,6 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish, isReviewMode }) => {
     }
   };
 
-  // キーボードイベントの処理
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      e.preventDefault(); // デフォルトの挙動を防ぐ
-      handleSubmit();
-    }
-  };
-
   // クイズを早期に終了する処理
   const handleEarlyFinish = () => {
     onFinish(score, wrongSentences, currentIndex + 1);
@@ -93,12 +106,11 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish, isReviewMode }) => {
         type="text"
         value={userAnswer}
         onChange={(e) => setUserAnswer(e.target.value)}
-        onKeyDown={handleKeyDown}
         className="border border-gray-300 p-2 w-full mb-2 rounded"
         placeholder={
           waitingForNext
-            ? "青ボタンを押して次の問題へ"
-            : "英語で入力してください"
+            ? "Enterキーで次の問題へ"
+            : "英語で入力し、Enterキーで回答する"
         }
         disabled={showAnswer}
       />
@@ -120,7 +132,7 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish, isReviewMode }) => {
         </div>
       )}
       <button
-        onClick={handleSubmit}
+        onClick={waitingForNext ? moveToNextQuestion : handleSubmit}
         className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300 mr-2"
       >
         {waitingForNext ? "次の問題" : "回答する"}
