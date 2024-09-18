@@ -1,5 +1,46 @@
 import React, { useState, useEffect, KeyboardEvent } from "react";
 
+// 型定義の追加
+interface SpeechRecognition extends EventTarget {
+  lang: string;
+  continuous: boolean;
+  interimResults: boolean;
+  onresult: ((event: SpeechRecognitionEvent) => void) | null;
+  onend: (() => void) | null;
+  start(): void;
+  stop(): void;
+}
+
+interface SpeechRecognitionEvent extends Event {
+  readonly resultIndex: number;
+  readonly results: SpeechRecognitionResultList;
+}
+
+interface SpeechRecognitionResultList {
+  readonly length: number;
+  item(index: number): SpeechRecognitionResult;
+  [index: number]: SpeechRecognitionResult;
+}
+
+interface SpeechRecognitionResult {
+  readonly length: number;
+  readonly isFinal: boolean;
+  item(index: number): SpeechRecognitionAlternative;
+  [index: number]: SpeechRecognitionAlternative;
+}
+
+interface SpeechRecognitionAlternative {
+  readonly transcript: string;
+  readonly confidence: number;
+}
+
+declare global {
+  interface Window {
+    SpeechRecognition: typeof SpeechRecognition;
+    webkitSpeechRecognition: typeof SpeechRecognition;
+  }
+}
+
 interface Sentence {
   日本語: string;
   英語: string;
@@ -25,14 +66,58 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish, isReviewMode }) => {
   const [wrongSentences, setWrongSentences] = useState<Sentence[]>([]);
   const [waitingForNext, setWaitingForNext] = useState(false);
 
+  // 追加: 音声認識関連の状態
+  const [isRecording, setIsRecording] = useState(false);
+  const [recognition, setRecognition] = useState<SpeechRecognition | null>(
+    null
+  );
+
   // クイズの文章をシャッフルして設定
   useEffect(() => {
     if (isReviewMode) {
       setQuizSentences(sentences);
     } else {
-      setQuizSentences(sentences.sort(() => 0.5 - Math.random()).slice(0, 10));
+      setQuizSentences(
+        [...sentences].sort(() => 0.5 - Math.random()).slice(0, 10)
+      );
+    }
+
+    // 音声認識の初期化
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (SpeechRecognition) {
+      const recog = new SpeechRecognition();
+      recog.lang = "en-US";
+      recog.continuous = false;
+      recog.interimResults = false;
+
+      recog.onresult = (event: SpeechRecognitionEvent) => {
+        const transcript = event.results[0][0].transcript;
+        setUserAnswer(transcript);
+      };
+
+      recog.onend = () => {
+        setIsRecording(false);
+      };
+
+      setRecognition(recog);
+    } else {
+      console.error("このブラウザは音声認識をサポートしていません。");
     }
   }, [sentences, isReviewMode]);
+
+  // 音声認識の開始・停止
+  const toggleRecording = () => {
+    if (recognition) {
+      if (isRecording) {
+        recognition.stop();
+      } else {
+        recognition.start();
+        setIsRecording(true);
+      }
+    }
+  };
 
   // 回答を提出する処理
   const handleSubmit = () => {
@@ -89,19 +174,31 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish, isReviewMode }) => {
         問題 {currentIndex + 1} / {quizSentences.length}
       </h2>
       <p className="mb-2">日本語: {quizSentences[currentIndex].日本語}</p>
-      <input
-        type="text"
-        value={userAnswer}
-        onChange={(e) => setUserAnswer(e.target.value)}
-        onKeyDown={handleKeyDown}
-        className="border border-gray-300 p-2 w-full mb-2 rounded"
-        placeholder={
-          waitingForNext
-            ? "青ボタンを押して次の問題へ"
-            : "英語で入力してください"
-        }
-        disabled={showAnswer}
-      />
+      <div className="flex items-center mb-2">
+        <input
+          type="text"
+          value={userAnswer}
+          onChange={(e) => setUserAnswer(e.target.value)}
+          onKeyDown={handleKeyDown}
+          className="border border-gray-300 p-2 w-full rounded"
+          placeholder={
+            waitingForNext
+              ? "青ボタンを押して次の問題へ"
+              : "英語で入力してください"
+          }
+          disabled={showAnswer}
+        />
+        {recognition && (
+          <button
+            onClick={toggleRecording}
+            className={`ml-2 p-2 rounded-full ${
+              isRecording ? "bg-red-500" : "bg-blue-500"
+            } text-white`}
+          >
+            {isRecording ? "■" : "🎤"}
+          </button>
+        )}
+      </div>
       {showAnswer && (
         <div
           className={`mt-2 p-2 rounded ${
@@ -127,7 +224,7 @@ const Quiz: React.FC<QuizProps> = ({ sentences, onFinish, isReviewMode }) => {
       </button>
       <button
         onClick={handleEarlyFinish}
-        className="mt-4 bg-green-500 hover:bg--600 text-white font-bold py-2 px-4 rounded transition duration-300"
+        className="mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300"
       >
         終了する
       </button>
